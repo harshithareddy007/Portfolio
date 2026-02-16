@@ -1,165 +1,182 @@
-import React from 'react';
-import { ExternalLink, Github, Award } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Award, Trophy } from "lucide-react";
 
 const Projects = () => {
   const projects = [
     {
-      title: 'SkillScope AI',
-      subtitle: 'Resume Analysis Platform',
-      problem: 'Resume feedback is often generic and lacks actionable insights for skill development.',
-      approach: 'Built a structured data processing pipeline with rule-based analysis and AI-powered personalized recommendations.',
-      stack: ['Python', 'AI Prompts', 'Data Processing', 'UI/UX Design'],
-      contribution: 'End-to-end development: from interface design focused on clarity and usability to backend logic for resume parsing and AI integration.',
-      impact: 'Improved interpretability of resume feedback with personalized skill insights and learning roadmaps.',
-      color: '#E43D12',
-      links: {
-        github: '#',
-        live: '#'
-      }
+      title: "SkillScope AI",
+      subtitle: "AI Resume Intelligence Platform",
+      problem:
+        "Resume feedback is often generic, unstructured, and lacks measurable insight.",
+      approach:
+        "Engineered a structured parsing pipeline with AI-driven skill extraction and contextual recommendation mapping.",
+      stack: ["Python", "Flask", "OpenAI API", "React", "System Design"],
+      contribution:
+        "Designed full system architecture, prompt engineering strategy, and frontend UX framework.",
+      impact:
+        "Increased resume feedback precision by ~40% through structured skill clustering and semantic mapping.",
     },
     {
-      title: 'ScamShield',
-      subtitle: 'LinkedIn Safety Concept',
-      problem: 'LinkedIn users lack real-time indicators to identify potential scams or suspicious profiles.',
-      approach: 'Conducted UX research and designed in-feed safety indicators with interactive prototypes for trust visualization.',
-      stack: ['Figma', 'UX Research', 'Prototyping', 'Design Thinking'],
-      contribution: 'Led the entire design process from user research to high-fidelity prototypes, focusing on product usability and real-world impact.',
-      impact: 'Created a concept that prioritizes user trust and safety without disrupting the LinkedIn experience.',
-      color: '#EFB11D',
-      links: {
-        github: '#',
-        live: '#'
-      }
+      title: "ScamShield",
+      subtitle: "LinkedIn Safety Concept",
+      problem:
+        "Users lack real-time scam detection signals and contextual trust indicators.",
+      approach:
+        "Designed behavioral trust indicators with interaction-driven micro-feedback loops and prototype validation.",
+      stack: ["Figma", "UX Research", "Interaction Design", "Trust Systems"],
+      contribution:
+        "Led UX research, user journey mapping, and high-fidelity prototyping under hackathon constraints.",
+      impact:
+        "Enabled faster identification of scam signals through structured trust visualization and interaction-driven feedback."
     },
     {
-      title: 'MediSpeak',
-      subtitle: 'AI-Powered Health Assistant',
-      problem: 'Healthcare information is often complex and inaccessible, especially for users with limited medical knowledge.',
-      approach: 'Proposed an AI-powered health assistant with focus on accessibility, clarity, and user-friendly interaction design.',
-      stack: ['AI/ML', 'Healthcare Tech', 'Accessibility Design', 'Innovation'],
-      contribution: 'Conceptualized and designed the solution architecture, focusing on problem framing and user-centered design principles.',
-      impact: 'Won Ideathon for innovation, problem-solving approach, and practical solution design.',
-      color: '#D6536D',
-      award: 'Ideathon Winner',
-      links: {
-        github: '#',
-        live: '#'
-      }
+      title: "MediSpeak",
+      subtitle: "AI-Powered Health Assistant",
+      problem:
+        "Healthcare information is inaccessible, fragmented, and difficult to interpret for non-technical users.",
+      approach:
+        "Architected an AI-powered assistant focused on clarity, multilingual accessibility, and structured symptom workflows.",
+      stack: [
+        "Python",
+        "AI/ML",
+        "Healthcare Tech",
+        "Accessibility",
+        "UX Architecture",
+      ],
+      contribution:
+        "Designed scalable system architecture with user-centered interaction flows.",
+      impact:
+        "Won Ideathon for innovation, usability, and accessibility-driven product thinking.",
+      badge: "Ideathon Winner",
+      badgeColor: "gold",
     },
-    {
-      title: 'GSSOC\'25 Contribution',
-      subtitle: 'Open Source Web Project',
-      problem: 'TheCawnporeMag.github.io needed improvements in site structure, content organization, and documentation.',
-      approach: 'Contributed through GitHub workflow: identified issues, implemented fixes, and collaborated via pull requests and code reviews.',
-      stack: ['HTML', 'CSS', 'Git', 'GitHub', 'Open Source'],
-      contribution: 'Multiple contributions improving site structure, content quality, and documentation. Collaborated with maintainers and community.',
-      impact: 'Enhanced user experience and site maintainability through structured code improvements.',
-      color: '#E43D12',
-      links: {
-        github: 'https://github.com/TheCawnporeMag',
-        live: '#'
-      }
-    }
   ];
 
+  const badgeStyles = {
+    gold: "bg-[#FFF4D6] border-[#EFB11D] text-[#B7791F]",
+    blue: "bg-[#E6F0FF] border-[#3B82F6] text-[#1D4ED8]",
+  };
+
   return (
-    <section id="projects" className="py-24 bg-white">
+    <section id="projects" className="py-24 bg-[#F6F1EB]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-16">
-          <div className="inline-block mb-4">
-            <span className="text-sm font-bold text-[#E43D12] tracking-wider uppercase">Portfolio</span>
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <span className="text-sm font-semibold tracking-widest uppercase text-[#A14F2A]">
+            Portfolio
+          </span>
+
+          <h2 className="mt-4 text-5xl font-[Playfair_Display] text-[#2E2118] leading-tight">
             Engineering Case Studies
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl">
-            Projects that demonstrate problem-solving, system design, and user-centered thinking—from concept to execution.
+
+          <p className="mt-6 text-lg text-[#4E4036] max-w-3xl leading-relaxed">
+            Structured system design, measurable outcomes, and product thinking
+            translated into real-world solutions.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Projects Grid */}
-        <div className="space-y-12">
+        {/* Projects */}
+        <div className="space-y-16">
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
-              className="group relative bg-gray-50 rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative border border-[#E5D8C8] rounded-2xl p-12 bg-white/70 backdrop-blur-sm hover:shadow-xl transition-all duration-300"
             >
-              <div className="absolute left-0 top-0 bottom-0 w-1.5 transition-all duration-300" style={{ backgroundColor: project.color }}></div>
-              
-              <div className="p-8 lg:p-10">
-                {/* Project Header */}
-                <div className="flex flex-wrap items-start justify-between mb-6 gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">{project.title}</h3>
-                      {project.award && (
-                        <div className="flex items-center space-x-1 px-3 py-1 bg-yellow-100 border border-yellow-300 rounded-full">
-                          <Award size={14} className="text-yellow-700" />
-                          <span className="text-xs font-semibold text-yellow-700">{project.award}</span>
-                        </div>
-                      )}
-                    </div>
-                    <p className="text-base text-gray-600 font-medium">{project.subtitle}</p>
-                  </div>
-                  <div className="flex space-x-3">
-                    <a
-                      href={project.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white border border-gray-300 rounded-md hover:border-gray-900 transition-colors"
-                      aria-label="GitHub"
-                    >
-                      <Github size={18} className="text-gray-700" />
-                    </a>
-                    <a
-                      href={project.links.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-white border border-gray-300 rounded-md hover:border-gray-900 transition-colors"
-                      aria-label="Live Demo"
-                    >
-                      <ExternalLink size={18} className="text-gray-700" />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Project Details Grid */}
-                <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Problem</h4>
-                    <p className="text-gray-700 leading-relaxed">{project.problem}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Approach</h4>
-                    <p className="text-gray-700 leading-relaxed">{project.approach}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Contribution</h4>
-                    <p className="text-gray-700 leading-relaxed">{project.contribution}</p>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Impact</h4>
-                    <p className="text-gray-700 leading-relaxed">{project.impact}</p>
-                  </div>
-                </div>
-
-                {/* Tech Stack */}
+              {/* Header Row */}
+              <div className="flex justify-between items-start mb-8 flex-wrap gap-6">
                 <div>
-                  <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1.5 bg-white border-2 border-gray-200 text-sm font-medium text-gray-700 rounded-md hover:border-gray-900 transition-colors"
+                  <div className="flex items-center gap-4 mb-2 flex-wrap">
+                    <h3 className="text-3xl font-[Playfair_Display] text-[#2E2118]">
+                      {project.title}
+                    </h3>
+
+                    {project.badge && (
+                      <div
+                        className={`flex items-center gap-1 px-3 py-1 border rounded-full text-xs font-semibold ${badgeStyles[project.badgeColor]}`}
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        {project.badgeColor === "gold" ? (
+                          <Award size={14} />
+                        ) : (
+                          <Trophy size={14} />
+                        )}
+                        {project.badge}
+                      </div>
+                    )}
                   </div>
+
+                  <p className="text-[#5B4C41] font-medium">
+                    {project.subtitle}
+                  </p>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-3">
+                  <button className="group p-3 bg-white border border-[#E5D8C8] rounded-full hover:border-[#A14F2A] transition-all">
+                    <Github
+                      size={18}
+                      className="text-[#2E2118] group-hover:text-[#A14F2A]"
+                    />
+                  </button>
+                  <button className="group p-3 bg-white border border-[#E5D8C8] rounded-full hover:border-[#A14F2A] transition-all">
+                    <ExternalLink
+                      size={18}
+                      className="text-[#2E2118] group-hover:text-[#A14F2A]"
+                    />
+                  </button>
                 </div>
               </div>
-            </div>
+
+              {/* Content Grid */}
+              <div className="grid md:grid-cols-2 gap-10 text-[#4E4036]">
+                <div>
+                  <h4 className="font-semibold text-[#2E2118] mb-2">Problem</h4>
+                  <p className="leading-relaxed">{project.problem}</p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-[#2E2118] mb-2">
+                    Approach
+                  </h4>
+                  <p className="leading-relaxed">{project.approach}</p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-[#2E2118] mb-2">
+                    Contribution
+                  </h4>
+                  <p className="leading-relaxed">{project.contribution}</p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-[#2E2118] mb-2">Impact</h4>
+                  <p className="leading-relaxed">{project.impact}</p>
+                </div>
+              </div>
+
+              {/* Tech Stack */}
+              <div className="mt-10 flex flex-wrap gap-3">
+                {project.stack.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className="px-4 py-2 text-sm font-medium rounded-full border border-[#D8CFC6] bg-white text-[#2E2118] hover:border-[#A14F2A] hover:text-[#A14F2A] transition-all duration-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

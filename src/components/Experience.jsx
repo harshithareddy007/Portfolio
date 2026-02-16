@@ -1,102 +1,148 @@
-import React from 'react';
-import { Briefcase, Calendar } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Briefcase, Calendar } from "lucide-react";
 
 const Experience = () => {
-  const experience = {
-    role: 'UI/UX Virtual Intern',
-    company: 'Cognifyz Technologies',
-    period: '2024',
-    responsibilities: [
-      'Designed user personas, user flows, and wireframes for mobile interfaces',
-      'Created mood boards and applied clarity-focused layouts to improve usability',
-      'Practiced design thinking and accessibility-aware UI decisions',
-      'Collaborated with team to deliver user-centered design solutions'
-    ],
-    skills: ['Figma', 'User Research', 'Wireframing', 'Mobile UI', 'Design Thinking']
-  };
+  const experiences = [
+    {
+      role: "UI/UX Virtual Intern",
+      company: "Cognifyz Technologies",
+      period: "2025",
+      responsibilities: [
+        "Designed structured user personas, journey maps, and mobile wireframes",
+        "Built clarity-focused interface layouts grounded in usability principles",
+        "Applied accessibility-aware UI decisions aligned with WCAG standards",
+        "Collaborated cross-functionally to ship user-centered design solutions",
+      ],
+      skills: ["Figma", "User Research", "Wireframing", "Accessibility"],
+    },
+    {
+      role: "Open Source Contributor (GSSOC ’25)",
+      company: "GirlScript Summer of Code",
+      period: "2025",
+      responsibilities: [
+        "Resolved UI rendering inconsistencies and improved semantic HTML structure",
+        "Refactored CSS components for better maintainability and modularity",
+        "Optimized frontend performance across multiple open-source repositories",
+        "Collaborated via structured GitHub workflow including PR reviews and issue tracking",
+      ],
+      skills: ["Git", "GitHub", "HTML", "CSS", "Open Source"],
+    },
+  ];
 
   return (
-    <section id="experience" className="py-24 bg-gray-50">
+    <section id="experience" className="py-24 bg-[#F6F1EB]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="mb-16">
-          <div className="inline-block mb-4">
-            <span className="text-sm font-bold text-[#E43D12] tracking-wider uppercase">Experience</span>
-          </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20"
+        >
+          <span className="text-sm font-semibold tracking-widest uppercase text-[#A14F2A]">
+            Experience
+          </span>
+
+          <h2 className="mt-4 text-5xl font-[Playfair_Display] text-[#2E2118] leading-tight">
             Professional Journey
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl">
-            Practical experience in UI/UX design and cross-functional collaboration.
-          </p>
-        </div>
 
-        {/* Experience Card */}
-        <div className="max-w-4xl">
-          <div className="bg-white rounded-lg border-l-4 border-[#E43D12] shadow-sm hover:shadow-xl transition-shadow p-8 lg:p-10">
-            {/* Header */}
-            <div className="flex flex-wrap items-start justify-between mb-6 gap-4">
-              <div className="flex-1">
-                <div className="flex items-center space-x-3 mb-2">
-                  <Briefcase size={24} className="text-[#E43D12]" />
-                  <h3 className="text-2xl font-bold text-gray-900">{experience.role}</h3>
-                </div>
-                <p className="text-lg text-gray-700 font-semibold mb-2">{experience.company}</p>
-                <div className="flex items-center space-x-2 text-gray-600">
-                  <Calendar size={16} />
-                  <span className="text-sm">{experience.period}</span>
+          <p className="mt-6 text-lg text-[#4E4036] max-w-2xl">
+            Practical experience in interface design, system thinking,
+            and collaborative open-source engineering.
+          </p>
+        </motion.div>
+
+        {/* Experience Cards */}
+        <div className="space-y-14 max-w-5xl">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="border border-[#E5D8C8] rounded-xl p-10 bg-white/60 hover:bg-white/80 transition-all duration-300"
+            >
+              {/* Header */}
+              <div className="flex justify-between items-start mb-8">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Briefcase size={20} className="text-[#E43D12]" />
+                    <h3 className="text-2xl font-[Playfair_Display] text-[#2E2118]">
+                      {exp.role}
+                    </h3>
+                  </div>
+
+                  <p className="text-lg font-semibold text-[#3E2C20]">
+                    {exp.company}
+                  </p>
+
+                  <div className="flex items-center gap-2 text-[#6B5748] mt-1">
+                    <Calendar size={14} />
+                    <span className="text-sm">{exp.period}</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Responsibilities */}
-            <div className="mb-6">
-              <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-4">Key Responsibilities</h4>
-              <ul className="space-y-3">
-                {experience.responsibilities.map((item, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="w-1.5 h-1.5 bg-[#E43D12] rounded-full mt-2 flex-shrink-0"></span>
-                    <span className="text-gray-700 leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              {/* Responsibilities */}
+              <div className="mb-8">
+                <h4 className="text-sm font-semibold uppercase tracking-wide text-[#A14F2A] mb-5">
+                  Key Contributions
+                </h4>
 
-            {/* Skills */}
-            <div>
-              <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-3">Skills Applied</h4>
-              <div className="flex flex-wrap gap-2">
-                {experience.skills.map((skill, index) => (
+                <ul className="space-y-4">
+                  {exp.responsibilities.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 bg-[#E43D12] rounded-full mt-2"></span>
+                      <span className="text-[#4E4036] leading-relaxed">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Skills */}
+              <div className="flex flex-wrap gap-3">
+                {exp.skills.map((skill, i) => (
                   <span
-                    key={index}
-                    className="px-3 py-1.5 bg-gray-100 text-sm font-medium text-gray-700 rounded-md"
+                    key={i}
+                    className="px-4 py-2 text-sm font-medium rounded-full border border-[#E8DED2] bg-white text-[#3E2C20] hover:border-[#E43D12] hover:text-[#E43D12] transition-all duration-300"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-12 max-w-4xl">
-          <div className="bg-white p-6 rounded-lg border-t-4 border-[#EFB11D] shadow-sm">
-            <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-[#EFB11D] bg-opacity-10 rounded-lg flex items-center justify-center">
-                  <Briefcase size={24} className="text-[#EFB11D]" />
-                </div>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-2">Currently Seeking</h4>
-                <p className="text-gray-600 leading-relaxed">
-                  Looking for summer research internship opportunities to learn rigorous research practices under faculty mentorship and contribute to cutting-edge projects in software systems and algorithms.
-                </p>
-              </div>
-            </div>
+        {/* Currently Seeking CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mt-24 max-w-5xl"
+        >
+          <div className="border border-[#F1C5B5] bg-[#FFF8F5] rounded-xl p-10">
+            <h4 className="text-2xl font-[Playfair_Display] text-[#2E2118] mb-4">
+              Currently Seeking
+            </h4>
+
+            <p className="text-[#4E4036] leading-relaxed max-w-3xl">
+              Exploring summer research internship opportunities focused on
+              software systems, algorithmic thinking, and human-centered
+              computing. Interested in structured mentorship environments
+              where systems thinking meets real-world impact.
+            </p>
           </div>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
